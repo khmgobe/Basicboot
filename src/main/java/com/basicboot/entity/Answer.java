@@ -4,12 +4,15 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @NoArgsConstructor
-public class Answer extends TimeBaseEntity{
-
+public class Answer{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "answer_id")
@@ -21,8 +24,15 @@ public class Answer extends TimeBaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     private Question question;
 
+    @CreatedDate
+    private LocalDateTime createDate;
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
     @Builder
-    Answer(String content){
+    Answer(String content, Question question, LocalDateTime createDate, LocalDateTime modifiedDate){
         this.content = content;
+        this.question = question;
+        this.createDate = createDate;
+        this.modifiedDate = modifiedDate;
     }
 }
