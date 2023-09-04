@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+<div layout:fragment="content" class="container my-3">
 <body>
-<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
-<div class="container my-3">
     <!-- 질문 -->
     <h2 class="border-bottom py-2" th:text="${question.subject}"></h2>
     <div class="card my-3">
@@ -40,7 +39,6 @@
         <textarea name="content" id="content" rows="10" class="form-control"></textarea>
         <input type="submit" value="답변등록" class="btn btn-primary my-2">
     </form>
-</div>
-
 </body>
+</div>
 </html>
