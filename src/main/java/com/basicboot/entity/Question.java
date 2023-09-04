@@ -26,7 +26,7 @@ public class Question{
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "question")
     private List<Answer> answerList = new ArrayList<>();
 
     @CreatedDate
