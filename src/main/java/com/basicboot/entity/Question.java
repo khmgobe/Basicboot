@@ -34,12 +34,16 @@ public class Question{
     @LastModifiedDate
     private LocalDateTime modifiedDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Users author;
+
     @Builder
-    Question(long id, String subject, String content, LocalDateTime createDate, LocalDateTime modifiedDate){
+    Question(long id, String subject, String content, LocalDateTime createDate, LocalDateTime modifiedDate, Users author){
         this.id = id;
         this.subject = subject;
         this.content = content;
         this.createDate = createDate;
         this.modifiedDate = modifiedDate;
+        this.author = author;
     }
 }
