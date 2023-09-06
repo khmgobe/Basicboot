@@ -28,11 +28,16 @@ public class Answer{
     private LocalDateTime createDate;
     @LastModifiedDate
     private LocalDateTime modifiedDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Users author;
+
     @Builder
-    Answer(String content, Question question, LocalDateTime createDate, LocalDateTime modifiedDate){
+    Answer(String content, Question question, LocalDateTime createDate, LocalDateTime modifiedDate, Users author){
         this.content = content;
         this.question = question;
         this.createDate = createDate;
         this.modifiedDate = modifiedDate;
+        this.author = author;
     }
 }
